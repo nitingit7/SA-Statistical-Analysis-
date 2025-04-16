@@ -8,7 +8,6 @@ Statistical methods are crucial for experimental and theoretical physics, enabli
 ## 📖 Key Focus Areas  
 - **Binomial Test**  
 - **Least Square Fitting Method**  
-- **Many More.......**  
-- **Monte Carlo Methods**  
+- **Many More.......**   
 
 Whether you're working with experimental results or modeling physical phenomena, this repository serves as a **foundation for statistical computations in physics**.
