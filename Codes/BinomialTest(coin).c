@@ -30,7 +30,7 @@ int main() {
     srand(time(NULL));
     int n; double q;
     printf("Enter number of tosses: "); scanf("%d", &n);
-    printf("Enter probability of heads (q): "); scanf("%lf", &q);
+    printf("Enter probability of heads (q) (0 < q < 1): "); scanf("%lf", &q);
 
     int heads = simulate(n, q);
     double p_val = binom_test(heads, n, 0.5);
