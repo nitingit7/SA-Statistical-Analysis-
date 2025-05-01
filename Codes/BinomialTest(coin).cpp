@@ -4,17 +4,17 @@
 using namespace std;
 
 //Function to calculate the factorial
-// double factorial(int n){
-//     long long result = 1;
-//     for(int i=1; i<=n; i++){
-//         result *= i;
-//     }
-//     return result;
-// }
-
-double factorial(int n){
-    return tgamma(n+1);
+long factorial(int n){
+    long long result = 1;
+    for(int i=1; i<=n; i++){
+        result *= i;
+    }
+    return result;
 }
+
+// double factorial(int n){
+//     return tgamma(n+1);
+// }
 
 //Function to compute the nCr
 double nCr(int n, int r){
