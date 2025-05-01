@@ -48,4 +48,5 @@ int main()
     generate_binomial_means(means, M, 20, 0.5);
     plot_distribution(means, M, "binomial_distribution.txt");
 
+    return 0;
 }
