@@ -1,55 +1,46 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <time.h>
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+#include <ctime>
+#include <cmath>
 
-#define _USE_MATH_DEFINES
-#define N 1000      // Size of each random sequence
-#define M 10000     // Number of sequences
+#define M_PI_VALUE 3.14159
+#define M 10000
+#define N 1000
 
-// Generate random numbers from a normal distribution
-void generate_normal_means(double means[], int size) 
-{
-    for (int i = 0; i < size; i++) {
-        double sum = 0.0;
-        for (int j = 0; j < N; j++) {
-            double u1 = ((double)rand() / RAND_MAX);
-            if (u1 == 0) 
-            {
-                u1 = 1e-10; // Small positive number to avoid log(0)
+void Generating_Normal_Mean(double mean[], int size){
+    for(int i=0;i<M;i++){
+        double sum =0;
+        for (int j=0;j<N;j++){
+            double U1 = (double)rand() / RAND_MAX;
+            if(U1==0.0){
+                U1 = 1e-10; //Samlle value for log;
             }
-            double u2 = ((double)rand() / RAND_MAX);
-            double z = sqrt(-2.0 * log(u1)) * cos(2 * M_PI * u2); // Box-Muller transform
-            sum += z;
+            double U2 = (double)rand() / RAND_MAX;
+            double z = sqrt(-2*log(U1))*cos(2*M_PI_VALUE*U2);
+            sum+=z;
         }
-        means[i] = sum / N;
+        mean[i] = sum / N;
     }
 }
-// Save distribution to a file for plotting
-void plot_distribution(double means[], int size, const char* filename) 
-{
-    FILE* file = fopen(filename, "w");
-    if (file == NULL) {
-        perror("Failed to open file");
+void Plot_Graph_From_Text(double mean[], int size, const char* Filname){
+
+    FILE* file = fopen(Filname, "w");
+    if(file == NULL){
+        printf("Failed to return the file");
         return;
     }
-    for (int i = 0; i < size; i++) {
-        fprintf(file, "%f\n", means[i]);
+    for(int i=0;i<size;i++){
+        fprintf(file, "%f\n", mean[i]);
     }
     fclose(file);
 }
 
-int main()
-{
-    double means[M];
-
-    // Seed random number generator
+int main(){
+    double mean[M];
+    
     srand(time(NULL));
-
-    // Example: Verify CLT for normal distribution
-    generate_normal_means(means, M);
-    plot_distribution(means, M, "normal_distribution.txt");
-
+    Generating_Normal_Mean(mean,M);
+    Plot_Graph_From_Text(mean,M,"DataSavedNormal.txt");
     return 0;
-
 }
